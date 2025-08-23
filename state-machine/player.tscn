@@ -3,8 +3,9 @@
 [ext_resource type="SpriteFrames" uid="uid://drcvpu67u5b55" path="res://Animations/player.tres" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cm7alv1houay8" path="res://Scripts/enum_state_machine.gd" id="1_onrkg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(13, 36)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 7.5
+height = 37.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
@@ -12,12 +13,12 @@ script = ExtResource("1_onrkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = ExtResource("1_4flbx")
-animation = &"fall"
+animation = &"dash"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -1)
-shape = SubResource("RectangleShape2D_onrkg")
+position = Vector2(0.5, -1.5)
+shape = SubResource("CapsuleShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -16)

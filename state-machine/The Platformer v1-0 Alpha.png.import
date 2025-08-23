@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://16xqcvp5y2d0"
-path="res://.godot/imported/reRun-Sheet.png-cce299bedd9264711151352a5db7701d.ctex"
+uid="uid://cf6ts6ba05w7c"
+path="res://.godot/imported/The Platformer v1-0 Alpha.png-1a2a3d29b39f0f23a44b6113fd01aa98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reRun-Sheet.png"
-dest_files=["res://.godot/imported/reRun-Sheet.png-cce299bedd9264711151352a5db7701d.ctex"]
+source_file="res://The Platformer v1-0 Alpha.png"
+dest_files=["res://.godot/imported/The Platformer v1-0 Alpha.png-1a2a3d29b39f0f23a44b6113fd01aa98.ctex"]
 
 [params]
 
