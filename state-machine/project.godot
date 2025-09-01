@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="State-Machine"
+config/tags=PackedStringArray("module")
 run/main_scene="uid://dvwffoi8idh5j"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
