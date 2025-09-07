@@ -1,25 +1,38 @@
-extends CharacterBody2D
+extends Node
+
+@export var starting_state: State
+
+var current_state: State
+
+# Player is set as the parent, assigned as parent of all states
+func init(parent: Player) -> void: #init is called when the script is initialized
+	for child in get_children():
+		child.parent = parent
+		
+	# initialize to default state
+	change_state(starting_state)
+
+func change_state(new_state: State) -> void:
+	if current_state:
+		current_state.exit() # if currently in state, exit
+	
+	current_state = new_state # change state to one passed in parameter
+	current_state.enter()
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+func process_physics(delta: float) -> void:
+	var new_state = current_state.process_physics(delta)
+	if new_state:
+		change_state(new_state)
 
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+func process_input(event: InputEvent) -> void:
+	var new_state = current_state.process_input(event)
+	if new_state:
+		change_state(new_state)
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+func process_frame(delta: float) -> void:
+	var new_state = current_state.process_frame(delta)
+	if new_state:
+		change_state(new_state)
