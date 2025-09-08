@@ -8,16 +8,18 @@ var animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready
 var state_machine: Node = $state_machine
 
-func ready() -> void:
+func _ready() -> void:
 	# initializes state machine node
 	state_machine.init(self)
-	print("hi")
 	
-func unhandled_input(event: InputEvent) -> void: 
+func _unhandled_input(event: InputEvent) -> void: 
 	state_machine.process_input(event) #passes input to the state machine
 
-func process_physics(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta) #pass delta to state machine
-	
-func process(delta: float) -> void:
+	velocity = get_gravity() * 10 * delta
+	move_and_slide()
+	print(velocity)
+
+func _process(delta: float) -> void:
 	state_machine.process_frame(delta) #pass delta to state machine

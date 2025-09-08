@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://dvwffoi8idh5j"]
+[gd_scene load_steps=5 format=4 uid="uid://dvwffoi8idh5j"]
 
 [ext_resource type="PackedScene" uid="uid://bs06r7jtf2gne" path="res://player.tscn" id="1_pbelu"]
 [ext_resource type="Texture2D" uid="uid://csgmg6v3ubf10" path="res://Sprites/Tilesets/mk_16_16_nature_tileset.png" id="2_kycxd"]
-[ext_resource type="Script" uid="uid://drdpqbme0y1of" path="res://Scripts/player.gd" id="2_pa6j6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pa6j6"]
 texture = ExtResource("2_kycxd")
@@ -946,9 +945,8 @@ sources/5 = SubResource("TileSetAtlasSource_pa6j6")
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_pbelu")]
-position = Vector2(0, 2)
+position = Vector2(-15, -160)
 collision_layer = 2
-script = ExtResource("2_pa6j6")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
