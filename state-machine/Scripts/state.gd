@@ -2,7 +2,7 @@ class_name State
 extends Node
 
 @export var animation_name: String
-var parent = Player
+var parent: Player
 
 func enter() -> void:
 	parent.animations.play(animation_name)
