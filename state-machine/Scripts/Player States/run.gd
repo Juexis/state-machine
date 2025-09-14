@@ -24,6 +24,7 @@ func process_physics(delta):
 	var input_axis = Input.get_axis("move_left", "move_right")
 	parent.velocity.x = move_toward(parent.velocity.x, speed * input_axis, acceleration * delta)
 	
+	
 	parent.move_and_slide()
 	
 	if input_axis == 0:

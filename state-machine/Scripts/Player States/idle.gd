@@ -12,6 +12,8 @@ var fall_state: PlayerState
 
 func enter():
 	super()
+	parent.velocity.x = move_toward(parent.velocity.x, 0, 550)
+
 
 func process_input(event):
 	var input_axis = Input.get_axis("move_left", "move_right")

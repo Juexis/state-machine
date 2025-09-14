@@ -22,8 +22,8 @@ func change_state(new_state: State) -> void:
 
 func process_physics(delta: float) -> void:
 	print(current_state)
-	var new_state = current_state.process_physics(delta)
-	if new_state:
+	var new_state = current_state.process_physics(delta) 
+	if new_state: # runs logic until a new state is returned by the process function
 		change_state(new_state)
 
 

@@ -16,10 +16,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event) #passes input to the state machine
 
 func _physics_process(delta: float) -> void:
+	velocity = get_gravity() * 3 * delta # weird imp
 	state_machine.process_physics(delta) #pass delta to state machine
-	velocity = get_gravity() * 10 * delta
-	move_and_slide()
 	print(velocity)
+	move_and_slide()
+	
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta) #pass delta to state machine
