@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs06r7jtf2gne"]
+[gd_scene load_steps=9 format=3 uid="uid://bs06r7jtf2gne"]
 
 [ext_resource type="SpriteFrames" uid="uid://drcvpu67u5b55" path="res://Animations/player.tres" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bwm88ejo8hvon" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://bomdm66paxyuj" path="res://Scripts/state_machine.gd" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://cbwt3i44geip2" path="res://Scripts/Player States/idle.gd" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://ohlenoi346ic" path="res://Scripts/Player States/run.gd" id="5_sweqy"]
+[ext_resource type="Script" uid="uid://cpc8mk4x28tr1" path="res://Scripts/Player States/jump.gd" id="6_2hs0m"]
+[ext_resource type="Script" uid="uid://bguh25i8jkck4" path="res://Scripts/Player States/fall.gd" id="7_1jxqw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 7.5
@@ -33,12 +35,26 @@ position_smoothing_speed = 12.0
 script = ExtResource("3_i3pqv")
 starting_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("run_state")]
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("run_state", "jump_state", "fall_state")]
 script = ExtResource("4_hqtel")
 run_state = NodePath("../run")
+jump_state = NodePath("../jump")
+fall_state = NodePath("../fall")
 animation_name = "idle"
 
-[node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+[node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "jump_state", "fall_state")]
 script = ExtResource("5_sweqy")
 idle_state = NodePath("../idle")
+jump_state = NodePath("../jump")
+fall_state = NodePath("../fall")
 animation_name = "run"
+
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state")]
+script = ExtResource("6_2hs0m")
+fall_state = NodePath("../fall")
+animation_name = "jump"
+
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("7_1jxqw")
+idle_state = NodePath("../idle")
+animation_name = "fall"
